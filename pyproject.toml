@@ -1,0 +1,32 @@
+[project]
+name = "embeddinggemma-service"
+version = "0.1.0"
+description = "Generic local text embedding HTTP service using EmbeddingGemma 300M + LiteRT"
+readme = "README.md"
+authors = [
+    { name = "jsfl", email = "jasfal2004@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+server = [
+    "ai-edge-litert>=2.1,<3",
+    "fastapi>=0.115",
+    "numpy>=2.0",
+    "pydantic-settings>=2.6",
+    "sentencepiece>=0.2",
+    "uvicorn>=0.32",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+embeddinggemma-service = "embeddinggemma_service.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
